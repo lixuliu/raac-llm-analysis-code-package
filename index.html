@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      RAAC LLM Analysis Code Package - Artificial Intelligence-assisted
+      Literature Screening with Empirical Validation in Reinforced Autoclaved
+      Aerated Concrete Research
+    </title>
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --text-color: #333;
+        --background-color: #f8f9fa;
+        --code-background: #f1f1f1;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: var(--background-color);
+      }
+
+      .container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .badges {
+        margin: 20px 0;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0 5px;
+        border-radius: 4px;
+        text-decoration: none;
+        color: white;
+        background-color: var(--secondary-color);
+      }
+
+      h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+        margin-top: 40px;
+      }
+
+      h3 {
+        color: var(--primary-color);
+        margin-top: 30px;
+      }
+
+      .author-info {
+        background-color: var(--code-background);
+        padding: 20px;
+        border-radius: 5px;
+        margin: 20px 0;
+      }
+
+      .contact-info {
+        margin: 20px 0;
+      }
+
+      .contact-info a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: var(--code-background);
+      }
+
+      code {
+        background-color: var(--code-background);
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      pre {
+        background-color: var(--code-background);
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      .workflow {
+        text-align: center;
+        margin: 40px 0;
+      }
+
+      .workflow img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .acknowledgements {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #ddd;
+      }
+
+      .acknowledgements a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      .acknowledgements a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>RAAC LLM Analysis Code Package</h1>
+        <div class="badges">
+          <a href="https://www.python.org/downloads/" class="badge"
+            >Python 3.11+</a
+          >
+          <a
+            href="https://creativecommons.org/licenses/by-nc/4.0/"
+            class="badge"
+            >CC BY-NC 4.0 License</a
+          >
+          <a href="https://doi.org/xxxx/UBIRA_RAAC_LLM" class="badge">DOI</a>
+        </div>
+        <div style="margin-top: 20px">
+          <a
+            href="https://github.com/lixuliu/raac-llm-analysis-code-package"
+            style="
+              display: inline-block;
+              padding: 10px 20px;
+              background-color: #24292e;
+              color: white;
+              text-decoration: none;
+              border-radius: 5px;
+              font-weight: bold;
+              transition: background-color 0.3s;
+            "
+          >
+            <svg
+              style="vertical-align: middle; margin-right: 8px"
+              height="20"
+              width="20"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+            >
+              <path
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+              ></path>
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+      </header>
+
+      <section class="author-info">
+        <h2>Author Information</h2>
+        <p><strong>Author:</strong> Dr Lixu Liu</p>
+        <p><strong>Position:</strong> Research Fellow</p>
+        <div class="contact-info">
+          <p><strong>Contact:</strong></p>
+          <ul>
+            <li>
+              Academic:
+              <a href="mailto:l.liu.9@bham.ac.uk">l.liu.9@bham.ac.uk</a>;
+              <a href="mailto:l.liu2@lboro.ac.uk">l.liu2@lboro.ac.uk</a>
+            </li>
+            <li>
+              Professional:
+              <a href="mailto:lixu@verdemetrix.com">lixu@verdemetrix.com</a>
+            </li>
+          </ul>
+        </div>
+        <p><strong>Affiliations:</strong></p>
+        <ul>
+          <li>Department of Civil Engineering, University of Birmingham</li>
+          <li>
+            School of Architecture, Building and Civil Engineering, Loughborough
+            University
+          </li>
+          <li>
+            Centre for Postdoctoral Development in Infrastructure, Cities and
+            Energy (C-DICE)
+          </li>
+          <li>RAAC Monitoring Team, Loughborough University</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Associated Research Paper</h2>
+        <p>
+          This code package is the official implementation of the research
+          paper:
+        </p>
+        <p>
+          <strong>Title:</strong> "Artificial Intelligence-assisted Literature
+          Screening with Empirical Validation in Reinforced Autoclaved Aerated
+          Concrete Research"
+        </p>
+        <p><strong>Status:</strong> In Preparation</p>
+        <p><strong>Authors:</strong> Liu, L. et al.</p>
+        <p><strong>Year:</strong> 2025</p>
+        <div
+          style="
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+          "
+        >
+          <p style="margin: 0">
+            <strong>Important Notice:</strong> This code package is currently
+            under embargo and will be made publicly accessible after the
+            associated research paper is published. The repository is maintained
+            for reference purposes during the peer review process.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Overview</h2>
+        <p>
+          This repository contains the full Python codebase supporting our
+          research on AI-assisted literature screening and empirical validation
+          in RAAC research. The code implements a comprehensive, AI-powered
+          workflow to:
+        </p>
+        <ul>
+          <li>Automatically screen and filter relevant RAAC literature</li>
+          <li>Extract and compare RAAC definitions across documents</li>
+          <li>Identify explicit RAAC mentions and contextual references</li>
+          <li>
+            Extract defect-related information using structured prompt
+            frameworks
+          </li>
+          <li>Combine and validate results for empirical research analysis</li>
+        </ul>
+        <p>
+          The scripts were developed using
+          <strong>Claude 3 Opus API</strong> and tested on a comprehensive
+          dataset of UK-based RAAC research documents, providing automated
+          literature screening capabilities for researchers.
+        </p>
+      </section>
+
+      <section>
+        <h2>Features</h2>
+        <ul>
+          <li>Intelligent definition extraction and comparison</li>
+          <li>Structured defect analysis framework</li>
+          <li>Comprehensive data aggregation</li>
+          <li>Parallel prompt evaluation system</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Project Structure</h2>
+        <div
+          style="
+            background-color: #e8f4fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+          "
+        >
+          <p style="margin: 0">
+            <strong>Note:</strong> Scripts 1-4 (Definition Extraction and
+            Explicit Mention Check) are the core validated components supporting
+            the main research paper. Scripts 5-6 (Defect Analysis) are
+            experimental components developed as part of this research but not
+            yet empirically validated - they are provided for the research
+            community to build upon.
+          </p>
+        </div>
+        <h3>Core Files</h3>
+        <table>
+          <tr>
+            <th>File</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>README.md</code></td>
+            <td>Project documentation and setup instructions</td>
+          </tr>
+        </table>
+
+        <h3>1-2. Definition Extraction (Validated Core Components)</h3>
+        <table>
+          <tr>
+            <th>Script</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>
+              <code>01-a_RAAC_DefinitionExtraction.py</code>
+            </td>
+            <td>Extracts RAAC definitions or generates contextual summaries</td>
+          </tr>
+          <tr>
+            <td>
+              <code>01-b_RAAC_DefinitionPresenceCheck_BinaryFlag.py</code>
+            </td>
+            <td>Binary classification for RAAC definition presence</td>
+          </tr>
+        </table>
+
+        <h3>3-4. Explicit Mention Check (Validated Core Components)</h3>
+        <table>
+          <tr>
+            <th>Script</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>
+              <code>02-a_RAAC_ExplicitMentionCheck.py</code>
+            </td>
+            <td>Determines explicit RAAC mentions in documents</td>
+          </tr>
+          <tr>
+            <td>
+              <code>02-b_RAAC_ExplicitMentionCheck_BinaryFlag.py</code>
+            </td>
+            <td>Binary classification for RAAC mentions</td>
+          </tr>
+        </table>
+
+        <h3>5-6. Defect Analysis (Experimental Components)</h3>
+        <table>
+          <tr>
+            <th>Script</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td><code>03_DefectExtraction_SevenQuestions.py</code></td>
+            <td>Extracts defect information using 7-question framework</td>
+          </tr>
+          <tr>
+            <td><code>04_CombineExtractedDefectData.py</code></td>
+            <td>Aggregates defect data into master dataset</td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Installation</h2>
+        <ol>
+          <li>
+            <p>Clone the repository:</p>
+            <pre><code>git clone https://github.com/lixuliu/raac-llm-analysis-code-package.git
+cd raac-llm-analysis-code-package</code></pre>
+          </li>
+          <li>
+            <p>Create a virtual environment (recommended):</p>
+            <pre><code>python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate</code></pre>
+          </li>
+          <li>
+            <p>Install dependencies:</p>
+            <pre><code>pip install -r requirements.txt</code></pre>
+          </li>
+          <li>
+            <p>Set up your API key:</p>
+            <pre><code>export ANTHROPIC_API_KEY='your-api-key-here'  # On Windows: set ANTHROPIC_API_KEY=your-api-key-here</code></pre>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Usage</h2>
+        <ol>
+          <li>
+            <p>Set up your environment:</p>
+            <pre><code># Set your Anthropic API key
+export ANTHROPIC_API_KEY='your-api-key-here'  # On Windows: set ANTHROPIC_API_KEY=your-api-key-here
+
+# Install required dependencies
+pip install -r requirements.txt</code></pre>
+          </li>
+          <li>
+            <p>Prepare your data:</p>
+            <ul>
+              <li>Create a folder containing your PDF documents to analyze</li>
+              <li>Ensure all PDFs are readable and not corrupted</li>
+            </ul>
+          </li>
+          <li>
+            <p>Run the analysis pipeline:</p>
+            <pre><code># Step 1a: Extract RAAC definitions
+python "01-a_RAAC_DefinitionExtraction.py"
+
+# Step 1b: Check for RAAC definition presence
+python "01-b_RAAC_DefinitionPresenceCheck_BinaryFlag.py"
+
+# Step 2a: Check for explicit RAAC mentions
+python "02-a_RAAC_ExplicitMentionCheck.py"
+
+# Step 2b: Check for RAAC mention presence
+python "02-b_RAAC_ExplicitMentionCheck_BinaryFlag.py"
+
+# Step 3: Extract defect information
+python 03_DefectExtraction_SevenQuestions.py
+
+# Step 4: Combine the results
+python 04_CombineExtractedDefectData.py</code></pre>
+          </li>
+        </ol>
+      </section>
+
+      <section class="acknowledgements">
+        <h2>Acknowledgements</h2>
+        <p>This research was supported by:</p>
+        <ul>
+          <li>
+            <a href="https://c-dice.ac.uk/">C-DICE</a> – Centre for Postdoctoral
+            Development in Infrastructure, Cities and Energy
+          </li>
+          <li>
+            <a href="https://imfuna.com/">IMFUNA Ltd</a> – Digital solutions for
+            construction and property sectors
+          </li>
+        </ul>
+      </section>
+
+      <section class="license">
+        <h2>License</h2>
+        <p>
+          This project is licensed under the
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/"
+            >Creative Commons Attribution-NonCommercial 4.0 International
+            License (CC BY-NC 4.0)</a
+          >.<br />
+          You are free to share and adapt the material for non-commercial
+          purposes, provided you give appropriate credit.
+          <strong
+            >Commercial use is not permitted without explicit permission from
+            the author.</strong
+          >
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
